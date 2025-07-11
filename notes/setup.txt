@@ -1,0 +1,6 @@
+# install
+pip install streamlit scikit-learn pandas numpy joblib
+
+# run
+python -m streamlit run .\fe_streamlit.py
+

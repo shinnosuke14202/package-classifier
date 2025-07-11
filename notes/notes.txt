@@ -1,0 +1,66 @@
+TF-IDF converts text to numbers:
+
+- TF (Term Frequency): How often a word appears in a document
+- IDF (Inverse Document Frequency): How rare a word is across all documents
+- Result: Common words get lower scores, rare/distinctive words get higher scores
+
+Logistic Regression pros and cons:
+
+✅ Fast and interpretable
+✅ Good for text classification
+❌ Assumes linear relationships
+
+Random Forest pros and cons:
+
+✅ Handles non-linear patterns
+✅ Provides feature importance
+✅ Robust to outliers
+❌ Slower and less interpretable 
+
+*** Train Results ***
+Dataset size: 50217
+Games: 14172, Non-games: 36045
+Game ratio: 28.22%
+
+* Logistic Regression *
+- Cross-validation accuracy: 0.8042 (+/- 0.0049)
+- Test accuracy: 0.8292
+✅ Model saved as 'linear_regression_model_v0.pkl'
+- Test accuracy after tuning: 0.8292
+✅ Model saved as 'linear_regression_model_v1.pkl'
+
+* Random Forest *
+- Cross-validation accuracy: 0.8102 (+/- 0.0028)
+- Test accuracy: 0.8189
+✅ Model saved as 'random_forest_model_v0.pkl'
+- Test accuracy after tuning: 0.8187
+✅ Model saved as 'random_forest_model_v1.pkl'
+
+** Differences between 2 approachs
+| Feature                     | **Logistic Regression**                                 | **Random Forest**                                         |
+| --------------------------- | ------------------------------------------------------- | --------------------------------------------------------- |
+| Type                        | Linear model                                            | Ensemble of decision trees (non-linear)                   |
+| Assumptions                 | Assumes linear relationship between features and output | No assumption about data distribution                     |
+| Interpretability            | Easy to interpret (feature weights)                     | Harder to interpret (many trees, splits)                  |
+| Training speed              | Very fast                                               | Slower (trains many trees)                                |
+| Overfitting risk            | Lower, but can underfit complex patterns                | Higher risk, but controlled by averaging                  |
+| Handles non-linear data     | ❌ Poorly                                               | ✅ Very well                                              |
+| Performance on complex data | Medium                                                  | Often better, especially with interactions/nonlinearities |
+
+** ngram_range=(1, 3)
+
+Tokens:       ["com", "example", "demo"]
+1-grams:      ["com", "example", "demo"]
+2-grams:      ["com example", "example demo"]
+3-grams:      ["com example demo"]
+
+** What is C in Logistic Regression? (Line 57)
+
+- C is inverse of regularization strength.
+- Smaller C → stronger regularization → simpler model, avoids overfitting.
+- Larger C → weaker regularization → allows more flexibility.
+
+Value of C	Effect
+0.1	    Strong regularization (more penalty for complexity)
+  1	    Default regularization
+ 10	    Weak regularization (more complex model allowed)
